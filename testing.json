@@ -1,0 +1,97 @@
+{
+  "info": {
+    "name": "School Management API",
+    "description": "Postman collection for testing the School Management APIs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Add School",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Green Valley School\",\n    \"address\": \"123 Elm St\",\n    \"latitude\": 40.7128,\n    \"longitude\": -74.0060\n}"
+        },
+        "url": {
+          "raw": "https://your-app-name.onrender.com/api/addSchool",
+          "host": [
+            "https://your-app-name.onrender.com"
+          ],
+          "path": [
+            "api",
+            "addSchool"
+          ]
+        }
+      },
+      "response": [
+        {
+          "status": "201 Created",
+          "code": 201,
+          "body": "{\n    \"message\": \"School added successfully.\"\n}"
+        },
+        {
+          "status": "400 Bad Request",
+          "code": 400,
+          "body": "{\n    \"error\": \"Invalid input data.\"\n}"
+        },
+        {
+          "status": "500 Internal Server Error",
+          "code": 500,
+          "body": "{\n    \"error\": \"Database operation failed.\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "List Schools",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://your-app-name.onrender.com/api/listSchools?latitude=40.7128&longitude=-74.0060",
+          "host": [
+            "https://your-app-name.onrender.com"
+          ],
+          "path": [
+            "api",
+            "listSchools"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "40.7128"
+            },
+            {
+              "key": "longitude",
+              "value": "-74.0060"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "status": "200 OK",
+          "code": 200,
+          "body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Green Valley School\",\n        \"address\": \"123 Elm St\",\n        \"latitude\": 40.7128,\n        \"longitude\": -74.0060,\n        \"distance\": 0.0\n    }\n]"
+        },
+        {
+          "status": "400 Bad Request",
+          "code": 400,
+          "body": "{\n    \"error\": \"Invalid parameters. Please provide valid latitude and longitude.\"\n}"
+        },
+        {
+          "status": "500 Internal Server Error",
+          "code": 500,
+          "body": "{\n    \"error\": \"Failed to fetch data from the database.\"\n}"
+        }
+      ]
+    }
+  ]
+}
