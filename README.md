@@ -88,7 +88,7 @@ The APIs are hosted at: [Your Hosting URL]
 
 Testing with Postman
 Import the provided Postman collection into Postman.
-Use the /addSchool endpoint to add sample data.
+Use the /addSchool endpoint to add sample data. 
 Use the /listSchools endpoint to retrieve sorted results.
 Folder Structure
 bash
